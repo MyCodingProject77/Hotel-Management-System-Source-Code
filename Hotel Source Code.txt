@@ -1,0 +1,73 @@
+
+
+
+         Save Code
+
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hoteldb;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("insert into booktab values(@id,@guestname,@room_no,@room_type,@hotel_code)", con);
+            cnn.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@GuestName", textBox2.Text);
+            cnn.Parameters.AddWithValue("@Room_No", int.Parse(textBox3.Text));
+            cnn.Parameters.AddWithValue("@Room_Type", textBox4.Text);
+            cnn.Parameters.AddWithValue("@Hotel_Code", textBox5.Text);
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Saved Successfully", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+
+          Add Code
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hoteldb;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("select * from booktab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+            dataGridView1.DataSource = table;
+
+
+
+
+          Update Code
+
+           SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hoteldb;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("update booktab set guestname=@guestname,room_no=@room_no,room_type=@room_type,hotel_code=@hotel_code)", con);
+            cnn.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@GuestName", textBox2.Text);
+            cnn.Parameters.AddWithValue("@Room_No", int.Parse(textBox3.Text));
+            cnn.Parameters.AddWithValue("@Room_Type", textBox4.Text);
+            cnn.Parameters.AddWithValue("@Hotel_Code", textBox5.Text);
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Updated Successfully", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+
+          Display Code
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hoteldb;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("select * from booktab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+            dataGridView1.DataSource = table;
+
+         
+
+
+
+
+
+      
